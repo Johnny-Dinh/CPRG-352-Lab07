@@ -13,7 +13,7 @@ import models.Role;
  */
 public class RoleDB {
     
-    public List<Role> getAll(String userdb) throws Exception {
+    public List<Role> getAll(String user) throws Exception {
         List<Role> roles = new ArrayList<>();
         ConnectionPool cp = ConnectionPool.getInstance();
         Connection con = cp.getConnection();
@@ -24,7 +24,7 @@ public class RoleDB {
         
         try {
             ps = con.prepareStatement(sql);
-            ps.setString(1, userdb);
+            ps.setString(1, user);
             rs = ps.executeQuery();
             while (rs.next()) {
                 int roleId = rs.getInt(1);
